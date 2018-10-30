@@ -1,0 +1,22 @@
+{
+  "name": "aselabwork",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.4",
+    "mongodb": "^3.1.8",
+    "ngstorage": "^0.3.11",
+    "nodemailer": "^4.6.8",
+    "request": "^2.88.0",
+    "request-json": "^0.6.3",
+    "save": "^2.3.2",
+    "xoauth2": "^1.2.0"
+  },
+  "author": "Pallavi Desai",
+  "license": "ISC"
+}

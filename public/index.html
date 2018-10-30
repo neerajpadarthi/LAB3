@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/tst.css">
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>-->
+    <link href="styles/font-awesome.css" rel="stylesheet">
+    <link href="styles/docs.css" rel="stylesheet" >
+    <link href="styles/bootstrap-social.css" rel="stylesheet" >
+    <!--<meta name="google-signin-client_id" content="980135476714-ibh5p28a48dv40h32eadbeagnfn5qq3m.apps.googleusercontent.com">-->
+</head>
+<body>
+<div class="bg-class">
+    <!--<img class="img-responsive" src="tst1.jpg" width=100%>-->
+    <!--<div class="home_background" style="background-image:url(images/home_slider.jpg)"></div>-->
+    <center>
+        <div class="col-md-4 col-md-offset-4" ng-app="demoMongo" ng-controller="getController">
+            <div class="box-content profile">
+                <h3 class="widget-title">Login Page</h3>
+                <form class="contact-form simple-form">
+                    <fieldset>
+                        <p><input type="text" style="width: 100%; left:35%; position: relative" id="myusername" ng-model="uname" placeholder="User Name" required ></p>
+                        <br>
+                        <input type="password" style="width: 100%; left:35%; position: relative" id="mypassword" ng-model="password" placeholder="Password" required>
+                        <br>
+                        <br>
+                        <input type="button" class="button" style="padding:9px 18px; left: 37%;position: relative"
+                               value="Login"
+                               ng-click="getDbData()">
+                    </fieldset>
+                </form>
+                <!--<div id="finalError" class="error-fields"></div>-->
+                <!--<span ng-model="finalError" class="error-fields"></span>-->
+                <input type="text"  style="width: 100% ;border: 0px; background-color: #F5F5F5; color: red" ng-model="finalErr">
+                <div class="form-group">
+                    <div class="col-md-12 control">
+                        <div class="no-acc">
+                            Don't have an account!
+                            <a href="RegisterPage.html"> Sign Up Here </a>
+                        </div>
+                    </div>
+                </div>
+                <!--<strong>OR</strong>-->
+                <br>
+                <!--<div class="form-group">-->
+                    <!--<div class="col-sm-12 controls">-->
+                        <!--<div class="g-signin2" data-cookiepolicy='single_host_origin' data-onsuccess="onSignIn"></div>-->
+                        <!--<br>-->
+                        <!--<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">-->
+                        <!--</fb:login-button>-->
+                        <!--<div id="status">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <br>
+            </div>
+        </div>
+    </center></div>
+</body>
+<script type="text/javascript" src="http://code.angularjs.org/1.1.1/angular.js"></script>
+<script type="text/javascript" src="http://code.angularjs.org/1.1.1/angular-resource.js"></script>
+<script type="text/javascript" src="http://code.angularjs.org/1.1.1/angular-sanitize.js"></script>
+<script src="js/apps.js"></script>
+</html>
