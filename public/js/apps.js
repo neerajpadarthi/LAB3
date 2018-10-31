@@ -291,6 +291,8 @@ myapp.controller('getController',function($scope,$http,$window){
                         for (i = 0; i < d.data.length; i++) {
                             if (d.data[i].password == $scope.password) {
                                 console.log("matched");
+                                localStorage.setItem("userid123",d.data[i].username);
+                                // alert(localStorage.getItem("userid123"));
                                 $window.location.href = 'home.html?'+d.data[i].username;
                             }
                             else {
