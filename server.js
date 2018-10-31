@@ -33,7 +33,6 @@ app.get('/kg', function (req, res) {
     });
 });
 
-
 app.post('/enroll', function (req, res) {
     MongoClient.connect(url, function(err, client) {
         if(err)
@@ -48,6 +47,22 @@ app.post('/enroll', function (req, res) {
         });
     });
 });
+
+app.post('/insdata', function (req, res) {
+    MongoClient.connect(url, function(err, client) {
+        if(err)
+        {
+            res.write("Failed, Error while cosnnecting to Database");
+            res.end();
+        }
+        var db= client.db();
+        insertSearchDocument(db, req.body, function() {
+            res.write("Successfully inserted");
+            res.end();
+        });
+    });
+});
+
 app.get('/getData', function (req, res) {
     var searchKeywords = req.query.keywords;
     console.log("Param are "+searchKeywords);
@@ -68,8 +83,84 @@ app.get('/getData', function (req, res) {
         });
     });
 });
+
+app.get('/getHistoryData', function (req, res) {
+    var searchKeywords = req.query.keywords;
+    console.log("Param are "+searchKeywords);
+    MongoClient.connect(url, function(err, db) {
+        if(err)
+        {
+            res.write("Failed, Error while cosnnecting to Database");
+            res.end();
+        }
+        if (err) throw err;
+        var dbo = db.db("apps");
+        var query = { username: searchKeywords };
+        dbo.collection("aselabsearch").find(query).toArray(function(err, result) {
+            if (err) throw err;
+            // console.log(result[0].major);
+            db.close();
+            res.json(result);
+        });
+    });
+});
+
+
+app.get('/updateData', function (req, res) {
+    var searchKeywords = req.query.keywords.substring(0,req.query.keywords.indexOf('@@@'));
+    var searchKeywords1 = req.query.keywords.substring(req.query.keywords.indexOf('@@@')+3,req.query.keywords.length);
+    console.log("Param are searchKeywords"+searchKeywords);
+    console.log("Param are searchKeywords"+searchKeywords1);
+    MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("apps");
+        var query = { username: searchKeywords };
+        var newvalues = { $set: {mobile: searchKeywords1} };
+        dbo.collection("aselab").updateOne(query, newvalues, function(err, res) {
+            if (err) throw err;
+            // console.log(result[0].major);
+            console.log("1 document updated");
+            db.close();
+        });
+    });
+});
+
+app.get('/deleteData', function (req, res) {
+    var searchKeywords = req.query.keywords;
+    console.log("Param are searchKeywords"+searchKeywords);
+    // console.log("Param are searchKeywords"+searchKeywords1);
+    MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("apps");
+        var query = { username: searchKeywords };
+        dbo.collection("aselabsearch").deleteMany(query, function(err, obj) {
+            if (err) throw err;
+            // console.log(result[0].major);
+            console.log(obj.result.n +"document updated");
+            db.close();
+        });
+    });
+});
+
+
+
+
+
+
 var insertDocument = function(db, data, callback) {
     db.collection('aselab').insertOne( data, function(err, result) {
+        if(err)
+        {
+            res.write("Registration Failed, Error While Registering");
+            res.end();
+        }
+        console.log("Inserted a document into the asedemo collection.");
+        callback();
+    });
+};
+
+var insertSearchDocument = function(db, data, callback) {
+    db.collection('aselabsearch').insertOne( data, function(err, result) {
         if(err)
         {
             res.write("Registration Failed, Error While Registering");
@@ -93,10 +184,7 @@ app.listen(port, function() {
     console.log("Example app listening at http://:%s", port)
 })
 
-
-
-
-app.get('/getData', function (req, res) {
+app.get('/getDataEmail', function (req, res) {
     var searchKeywords = req.query.searchkey;
     var searchKeywords1 = req.query.searchkey1;
     var searchKeywords2 = req.query.searchkey2;
@@ -110,13 +198,12 @@ app.get('/getData', function (req, res) {
             type: 'OAuth2',
             user: 's.pallavidesai@gmail.com',
             clientId: '319573095737-2c98cnr7fhjnurbi5es3h907klpd0hpb.apps.googleusercontent.com',
-            clientSecret: '',
-            refreshToken: '',
-            accessToken: '',
+            clientSecret: 'KZ1frHthVQ76hInQK9tjU3Gw',
+            refreshToken: '1/ygt_aw7FxteuAfblxMSFrm0wPDRYZT-DNqnnfJLCLwM',
+            accessToken: 'ya29.GltFBjWUTyAiDH7USeXj3duqUCq_Opy9N0l2onl-JTmj-Mi1_dN79sb5TVaPSiEjHASA80xoqtJd4DJ79o4JZqPsyW6HiVPmW_DIdVO9ISQlqVqMWPGkfbVR3dZf',
         },
     });
     var mailoption = {
-
         from : 'Pallavi <s.pallavidesai@gmail.com>',
         to : searchKeywords,
         subject : searchKeywords2,

@@ -1,4 +1,4 @@
-<html  ng-app="myApp" ng-controller="View1Ctrl">
+<html >
 <head>
 <title>Contact</title>
 <meta charset="utf-8">
@@ -16,12 +16,6 @@
         var userName=(url.substr(53)).replace("%20"," ");
         console.log('in html',userName);
         window.location.href = 'home.html?'+ userName;
-    }
-    function historypg() {
-        var url=window.location.href;
-        var userName=(url.substr(53)).replace("%20"," ");
-        console.log('in html',userName);
-        window.location.href = 'history.html?'+ userName;
     }
     function profilepg() {
         var url=window.location.href;
@@ -47,15 +41,21 @@
         console.log('in html',userName);
         window.location.href = 'index.html';
     }
+    function historypg() {
+        var url=window.location.href;
+        var userName=(url.substr(53)).replace("%20"," ");
+        console.log('in html',userName);
+        window.location.href = 'history.html?'+ userName;
+    }
 </script>
-<body>
+
+<body ng-app="demoMongo" ng-controller="gethistory">
 
 <div class="super_container">
 	
 	<!-- Header -->
 
 	<header class="header">
-
 
 		<!-- Main Navigation -->
 
@@ -80,15 +80,22 @@
 				</div>
 			</div>	
 		</nav>
+
 	</header>
+
+
+
 	<!-- Home -->
+
 	<div class="home">
 		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/contact_background.jpg"></div>
 		<div class="home_content">
-			<div class="home_title">contact</div>
+			<div class="home_title">Search History</div>
 		</div>
 	</div>
+
 	<!-- Contact -->
+
 	<div class="contact_form_section">
 		<div class="container">
 			<div class="row">
@@ -96,33 +103,36 @@
 
 					<!-- Contact Form -->
 					<div class="contact_form_container">
-						<div class="contact_title text-center">get in touch</div>
-						<form ng-submit="sendmail()" id="contact_form" class="contact_form text-center">
-							<input type="text" ng-model="formData.name" id="contact_form_name" class="contact_form_name input_field" placeholder="Name" required="required" data-error="Name is required.">
-							<input type="text" ng-model="formData.email" id="contact_form_email" class="contact_form_email input_field" placeholder="E-mail" required="required" data-error="Email is required.">
-							<input type="text" ng-model="formData.sub" id="contact_form_subject" class="contact_form_subject input_field" placeholder="Subject" required="required" data-error="Subject is required.">
-							<textarea ng-model="formData.mes" id="contact_form_message" class="text_field contact_form_message" name="message" rows="4" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>
-							<button  type="submit" id="form_submit_button" class="form_submit_button button trans_200">send message<span></span><span></span><span></span></button>
-						</form>
+						<table id="weather" class="tftable" border="3">
+							<tr>
+								<th>Eamil ID</th>
+								<th>Destination</th>
+								<th>From</th>
+								<th>To</th>
+							</tr>
+							<tr ng-repeat="x in fullDocument">
+								<td>{{x.substring(0,x.indexOf('!!!'))}}</td>
+								<td>{{x.substring(x.indexOf('!!!')+3,x.indexOf('@@@'))}}</td>
+								<td>{{x.substring(x.indexOf('@@@')+3,x.indexOf('###'))}}</td>
+								<td>{{x.substring(x.indexOf('###')+3,x.length)}}</td>
+								<!--<td>{{x.substring(x.indexOf('-',3)+1,x.indexOf('http')-1)}}</td>-->
+							</tr>
+						</table>
+						<input type="button" class="form_submit_button button trans_200" style="padding:9px 18px;"  value="Delete" ng-click="deletedoc()" onclick="historypg()"/>
+
+
 					</div>
 
 				</div>
 			</div>
 		</div>
 	</div>
+
 	<!-- About -->
 
 
 	<!-- Google Map -->
 </div>
-
-
-
-<script type="text/javascript" src="https://code.angularjs.org/1.1.1/angular.js"></script>
-<script type="text/javascript" src="https://code.angularjs.org/1.1.1/angular-resource.js"></script>
-<script type="text/javascript" src="https://code.angularjs.org/1.1.1/angular-sanitize.js"></script>
-<script src="js/controllers/nodemailer.js"></script>
-
 <script src="js/directives/jquery-3.2.1.min.js"></script>
 <script src="styles/bootstrap4/popper.js"></script>
 <script src="styles/bootstrap4/bootstrap.min.js"></script>
@@ -131,5 +141,8 @@
 <script src="js/directives/contact_custom.js"></script>
 
 </body>
-
+<script type="text/javascript" src="https://code.angularjs.org/1.1.1/angular.js"></script>
+<script type="text/javascript" src="https://code.angularjs.org/1.1.1/angular-resource.js"></script>
+<script type="text/javascript" src="https://code.angularjs.org/1.1.1/angular-sanitize.js"></script>
+<script src="js/apps.js"></script>
 </html>

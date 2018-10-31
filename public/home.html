@@ -21,10 +21,44 @@
             x.style.display = "block";
         }
     }
-	</script>
-
-<body >
-
+    function homepg() {
+        var url=window.location.href;
+        var userName=(url.substr(50)).replace("%20"," ");
+        console.log('in html',userName);
+        window.location.href = 'home.html?'+ userName;
+    }
+    function profilepg() {
+        var url=window.location.href;
+        var userName=(url.substr(50)).replace("%20"," ");
+        console.log('in html',userName);
+        window.location.href = 'profile.html?'+ userName;
+    }
+    function aboutpg() {
+        var url=window.location.href;
+        var userName=(url.substr(50)).replace("%20"," ");
+        console.log('in html',userName);
+        window.location.href = 'about.html?'+ userName;
+    }
+    function contactpg() {
+        var url=window.location.href;
+        var userName=(url.substr(50)).replace("%20"," ");
+        console.log('in html',userName);
+        window.location.href = 'contact.html?'+ userName;
+    }
+    function signoutpg() {
+        var url=window.location.href;
+        var userName=(url.substr(50)).replace("%20"," ");
+        console.log('in html',userName);
+        window.location.href = 'index.html';
+    }
+    function historypg() {
+        var url=window.location.href;
+        var userName=(url.substr(50)).replace("%20"," ");
+        console.log('in html',userName);
+        window.location.href = 'history.html?'+ userName;
+    }
+</script>
+<body  ng-app="demoMongo" ng-controller="indexctrl">
 <div class="super_container">
 	<header class="header">
 		<nav class="main_nav">
@@ -36,9 +70,12 @@
 						</div>
 						<div class="main_nav_container ml-auto">
 							<ul class="main_nav_list">
-								<li class="main_nav_item"><a href="#">home</a></li>
-								<li class="main_nav_item"><a href="about.html">about us</a></li>
-								<li class="main_nav_item"><a href="contact.html">contact</a></li>
+								<li class="main_nav_item"><a onclick="homepg()">home</a></li>
+								<li class="main_nav_item"><a onclick="profilepg()">profile</a></li>
+								<li class="main_nav_item"><a onclick="historypg()">history</a></li>
+								<li class="main_nav_item"><a onclick="contactpg()">contact</a></li>
+								<li class="main_nav_item"><a onclick="aboutpg()">about us</a></li>
+								<li class="main_nav_item"><a onclick="signoutpg()">sign out</a></li>
 							</ul>
 						</div>
 						<form id="search_form" class="search_form bez_1">
@@ -51,23 +88,7 @@
 				</div>
 			</div>	
 		</nav>
-
 	</header>
-
-	<div class="menu trans_500">
-		<div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
-			<div class="menu_close_container"><div class="menu_close"></div></div>
-			<div class="logo menu_logo"><a href="#"><img src="images/logo.png" alt=""></a></div>
-			<ul>
-				<li class="menu_item"><a href="#">home</a></li>
-				<li class="menu_item"><a href="about.html">about us</a></li>
-				<!--<li class="menu_item"><a href="offers.html">offers</a></li>-->
-				<!--<li class="menu_item"><a href="blog.html">news</a></li>-->
-				<li class="menu_item"><a href="contact.html">contact</a></li>
-			</ul>
-		</div>
-	</div>
-
 	<!-- Home -->
 
 	<div class="home">
@@ -95,7 +116,7 @@
 		</div>
 	</div>
 	<!-- Search -->
-	<div ng-app="demoMongo" ng-controller="indexctrl">
+	<div>
 	<div class="search" >
 		<div class="container fill_height">
 			<div class="row fill_height">
@@ -129,7 +150,6 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 <div id="resDIV" class="search" style="display:none">
 	<div>
@@ -138,7 +158,7 @@
 				<div class="col fill_height">
 		<div class="search_item">
 			<div>destination</div>
-			<p>{{searchDescription}}</p>
+			<p style="color:black;">{{searchDescription}}</p>
 			<br>
 			<!--<p><b>Wiki Link</b></p>-->
 			<!--<p><a href="{{wiki}}"> {{wiki}}</a> </p>-->
@@ -150,9 +170,7 @@
 	</div>
 </div>
 </div>
-
 </div>
-
 <script src="js/directives/jquery-3.2.1.min.js"></script>
 <script src="styles/bootstrap4/popper.js"></script>
 <script src="styles/bootstrap4/bootstrap.min.js"></script>

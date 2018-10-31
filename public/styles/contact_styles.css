@@ -478,7 +478,7 @@ section
 
 .main_nav_container
 {
-	margin-right: 221px;
+	/*margin-right: 221px;*/
 }
 .main_nav_item
 {
@@ -1318,3 +1318,10 @@ section
 {
 	color: #FFFFFF;
 }
+/* Custom */
+
+.tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #729ea5;border-collapse: collapse;}
+.tftable th {font-size:14px;background-color:#acc8cc;border-width: 2px;padding: 8px;border-style: solid;border-color: #729ea5;text-align:left;}
+.tftable tr {background-color:#d4e3e5;}
+.tftable td {font-size:13px;border-width:1px;padding:8px;border-style: solid;border-color: #729ea5;}
+.tftable tr:hover {background-color:#ffffff;}
