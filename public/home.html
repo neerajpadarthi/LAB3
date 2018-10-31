@@ -23,7 +23,11 @@
     }
     function homepg() {
         var url=window.location.href;
+        console.log('URL before is',url);
         var userName=(url.substr(50)).replace("%20"," ");
+        console.log('URL after 50 is',(url.substr(50)).replace("%20"," "));
+        console.log('URL after 53 is',(url.substr(53)).replace("%20"," "));
+        console.log('URL after 47 is',(url.substr(47)).replace("%20"," "));
         console.log('in html',userName);
         window.location.href = 'home.html?'+ userName;
     }
