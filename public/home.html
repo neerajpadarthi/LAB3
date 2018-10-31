@@ -18,7 +18,9 @@
     var url=window.location.href;
     console.log('URL after 50 is',(url.substr(50)).replace("%20"," "));
     console.log('URL after 53 is',(url.substr(53)).replace("%20"," "));
-    console.log('URL after 47 is',(url.substr(47)).replace("%20"," "));
+    console.log('URL after 46 is',(url.substr(47)).replace("%20"," "));
+    console.log('substring',(url.substr(url.indexOf('?'),url.length)).replace("%20"," "));
+
     function hideFunction() {
         var x = document.getElementById("resDIV");
         if (x.style.display === "none") {
