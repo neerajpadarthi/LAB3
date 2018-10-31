@@ -6,7 +6,7 @@ angular.module('myApp', [])
         $scope.sendmail = function () {
             var placeEntered = $scope.formData.email;
             if (placeEntered != null && placeEntered != "") {
-                alert("We received you Mail!!..We will keep in touch :)");
+                $scope.finalErr ="Mail successfully sent";
                 $http.get('http://127.0.0.1:5000/getDataEmail?searchkey='+$scope.formData.email+'&searchkey1='+$scope.formData.mes+'&searchkey2='+$scope.formData.sub).then(function(data)
                 {
                     alert(success);

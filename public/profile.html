@@ -11,41 +11,58 @@
 <link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
 </head>
 <script>
+    var url=window.location.href;
+    // localStorage.getItem("userid123")
+    console.log('URL after 50 is',(url.substr(50)).replace("%20"," "));
+    console.log('URL after 53 is',(url.substr(53)).replace("%20"," "));
+    console.log('URL after 46 is',(url.substr(47)).replace("%20"," "));
+    console.log('substring',(url.substr(url.indexOf('?')+1,url.length)).replace("%20"," "));
+
+    function hideFunction() {
+        var x = document.getElementById("resDIV");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        }
+    }
     function homepg() {
         var url=window.location.href;
-        var userName=(url.substr(53)).replace("%20"," ");
+        console.log('URL before is',url);
+        var userName=(url.substr(47)).replace("%20"," ");
+        console.log('URL after 50 is',(url.substr(50)).replace("%20"," "));
+        console.log('URL after 53 is',(url.substr(53)).replace("%20"," "));
+        console.log('URL after 47 is',(url.substr(47)).replace("%20"," "));
         console.log('in html',userName);
-        window.location.href = 'home.html?'+ userName;
+        window.location.href = 'home.html?'+ localStorage.getItem("userid123");
     }
     function profilepg() {
         var url=window.location.href;
-        var userName=(url.substr(53)).replace("%20"," ");
+        var userName=(url.substr(50)).replace("%20"," ");
         console.log('in html',userName);
-        window.location.href = 'profile.html?'+ userName;
+        window.location.href = 'profile.html?'+ localStorage.getItem("userid123");
     }
     function aboutpg() {
         var url=window.location.href;
-        var userName=(url.substr(53)).replace("%20"," ");
+        var userName=(url.substr(50)).replace("%20"," ");
         console.log('in html',userName);
-        window.location.href = 'about.html?'+ userName;
+        window.location.href = 'about.html?'+ localStorage.getItem("userid123");
     }
     function contactpg() {
         var url=window.location.href;
-        var userName=(url.substr(53)).replace("%20"," ");
+        var userName=(url.substr(50)).replace("%20"," ");
         console.log('in html',userName);
-        window.location.href = 'contact.html?'+ userName;
+        window.location.href = 'contact.html?'+ localStorage.getItem("userid123");
     }
     function signoutpg() {
         var url=window.location.href;
-        var userName=(url.substr(53)).replace("%20"," ");
+        var userName=(url.substr(50)).replace("%20"," ");
         console.log('in html',userName);
         window.location.href = 'index.html';
     }
     function historypg() {
         var url=window.location.href;
-        var userName=(url.substr(53)).replace("%20"," ");
+        var userName=(url.substr(50)).replace("%20"," ");
         console.log('in html',userName);
-        window.location.href = 'history.html?'+ userName;
+        window.location.href = 'history.html?'+ localStorage.getItem("userid123");
     }
 	</script>
 <body ng-app="demoMongo" ng-controller="getprofile">

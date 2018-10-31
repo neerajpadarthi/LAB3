@@ -119,8 +119,10 @@
 							<input type="text" ng-model="formData.email" id="contact_form_email" class="contact_form_email input_field" placeholder="E-mail" required="required" data-error="Email is required.">
 							<input type="text" ng-model="formData.sub" id="contact_form_subject" class="contact_form_subject input_field" placeholder="Subject" required="required" data-error="Subject is required.">
 							<textarea ng-model="formData.mes" id="contact_form_message" class="text_field contact_form_message" name="message" rows="4" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>
-							<button  type="submit" id="form_submit_button" class="form_submit_button button trans_200">send message<span></span><span></span><span></span></button>
+							<button  type="submit" id="form_submit_button" class="form_submit_button button trans_200" onclick="contactpg()">send message<span></span><span></span><span></span></button>
 						</form>
+                        <br>
+                        <input type="text"  style="width: 100% ;border: 0px;  background: transparent; color: red;text-align:center" ng-model="finalErr">
 					</div>
 
 				</div>
