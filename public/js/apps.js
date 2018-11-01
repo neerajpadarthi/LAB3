@@ -11,14 +11,14 @@ myapp.run(function ($http) {
 myapp.controller('gethistory',function($scope,$http){
     var url=window.location.href;
     var userName=(url.substr(53)).replace("%20"," ");
-    console.log("It is angular get profile !!!!!!!!!!!"+userName);
+    console.log("It is angular get profile !!!!!!!!!!!"+localStorage.getItem("userid123"));
     var config = {
         headers : {
             'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
         }
     }
     // // var req = $http.get('http://127.0.0.1:8081/getData');
-    $http.get('http://127.0.0.1:5000/getHistoryData?keywords='+userName).then(function(d)
+    $http.get('http://127.0.0.1:5000/getHistoryData?keywords='+localStorage.getItem("userid123")).then(function(d)
         {
             // console.log("document is ok"+document);
             console.log("val "+JSON.stringify({d: d}));
@@ -48,8 +48,8 @@ myapp.controller('gethistory',function($scope,$http){
     $scope.deletedoc = function() {
         var url=window.location.href;
         var userName=(url.substr(53)).replace("%20"," ");
-        console.log("It is angular get profile !!!!!!!!!!!"+userName);
-        $http.get('http://127.0.0.1:5000/deleteData?keywords='+userName).success(function(d)
+        console.log("It is angular get profile !!!!!!!!!!!"+localStorage.getItem("userid123"));
+        $http.get('http://127.0.0.1:5000/deleteData?keywords='+localStorage.getItem("userid123")).success(function(d)
             {
                 console.log("Deleted");
                 // $window.location.href = 'profile.html?'+'userName';
@@ -67,14 +67,14 @@ myapp.controller('gethistory',function($scope,$http){
 myapp.controller('getprofile',function($scope,$http){
     var url=window.location.href;
     var userName=(url.substr(53)).replace("%20"," ");
-    console.log("It is angular get profile !!!!!!!!!!!"+userName);
+    console.log("It is angular get profile !!!!!!!!!!!"+localStorage.getItem("userid123"));
     var config = {
         headers : {
             'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
         }
     }
     // // var req = $http.get('http://127.0.0.1:8081/getData');
-    $http.get('http://127.0.0.1:5000/getData?keywords='+userName).then(function(d)
+    $http.get('http://127.0.0.1:5000/getData?keywords='+localStorage.getItem("userid123")).then(function(d)
         {
             console.log("document is ok"+document);
             console.log("val "+JSON.stringify({d: d}));
@@ -94,8 +94,8 @@ myapp.controller('getprofile',function($scope,$http){
     $scope.updatedoc = function() {
         var url=window.location.href;
         var userName=(url.substr(53)).replace("%20"," ");
-        console.log("It is angular get profile !!!!!!!!!!!"+userName);
-        $http.get('http://127.0.0.1:5000/updateData?keywords='+userName+'@@@'+$scope.phone).success(function(d)
+        console.log("It is angular get profile !!!!!!!!!!!"+localStorage.getItem("userid123"));
+        $http.get('http://127.0.0.1:5000/updateData?keywords='+localStorage.getItem("userid123")+'@@@'+$scope.phone).success(function(d)
             {
                 console.log("Updated");
                 // $window.location.href = 'profile.html?'+'userName';
@@ -129,10 +129,10 @@ myapp.controller('indexctrl', function($scope, $http,$window) {
 
         var url=window.location.href;
         var userName=(url.substr(50)).replace("%20"," ");
-        console.log("It is angular nsert history profile !!!!!!!!!!!"+userName);
+        console.log("It is angular nsert history profile !!!!!!!!!!!"+localStorage.getItem("userid123"));
 
         var dataParams = {
-            'username' : userName,
+            'username' : localStorage.getItem("userid123"),
             'destination' : $scope.searchDestination,
             'from' : $scope.from,
             'to' : $scope.to,
